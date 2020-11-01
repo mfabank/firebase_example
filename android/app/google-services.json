@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "865922054213",
+    "firebase_url": "https://fir-dersler.firebaseio.com",
+    "project_id": "fir-dersler",
+    "storage_bucket": "fir-dersler.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865922054213:android:1f0f8b5feb277d32418b2c",
+        "android_client_info": {
+          "package_name": "com.example.firebase_example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865922054213-b0q0ce8k3s01sia6hsftagsloq5ig85q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebase_example",
+            "certificate_hash": "ba0d753dba60d5db2adb2db193446549f676001a"
+          }
+        },
+        {
+          "client_id": "865922054213-f84m5393hp90p3vavdtlc5hq5cv80s7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKSZlvEaSNMBlVKTFSaVMJb7r_3CBCuaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865922054213-f84m5393hp90p3vavdtlc5hq5cv80s7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
