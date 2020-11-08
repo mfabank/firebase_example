@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_example/firestore_islemler.dart';
 import 'package:firebase_example/firestore_islemlerimiz.dart';
 import 'package:firebase_example/login_islemleri.dart';
 import 'package:flutter/material.dart';
