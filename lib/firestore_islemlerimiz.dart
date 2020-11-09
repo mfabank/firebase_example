@@ -114,7 +114,13 @@ class _CloudFirestoreState extends State<CloudFirestore> {
   Future _veriGetir() async{
     DocumentSnapshot veriGetir = await _firestore.doc("users/haberler").get();
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) => YeniSayfa(veri: veriGetir)));
+    DocumentReference veriDinle = _firestore.collection("users").doc("haberler");
+    veriDinle.snapshots().listen((event) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => YeniSayfa(veri: event)));
+
+    });
+
+
 
   }
 }
