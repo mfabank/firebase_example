@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_example/yenisayfa.dart';
 import 'package:flutter/material.dart';
 
 class CloudFirestore extends StatefulWidget {
@@ -35,8 +36,14 @@ class _CloudFirestoreState extends State<CloudFirestore> {
             RaisedButton(
               child: Text("Veri Silme"),
               color: Colors.blueGrey,
-              //onPressed: _veriDengele,
+              onPressed: _veriSilme,
             ),
+            RaisedButton(
+              child: Text("Veri Oku"),
+              color: Colors.blueGrey,
+              onPressed: _veriGetir,
+            ),
+
           ],
         ),
       ),
@@ -66,25 +73,48 @@ class _CloudFirestoreState extends State<CloudFirestore> {
     _firestore.runTransaction((duzeltilecekVeri) async {
       DocumentSnapshot haberVerileri = await haberlerRef.get();
 
-      if (haberVerileri.exists){
-
+      if (haberVerileri.exists) {
         var mevcutPara = haberVerileri.data()["para"];
 
-        if(haberVerileri.data()["para"]>100){
-
-          duzeltilecekVeri.update(haberlerRef, {"para" : mevcutPara-100});
-          duzeltilecekVeri.update(_firestore.doc("users/sehirler"), {"para" : FieldValue.increment(100)});
-        }
-        else{
+        if (haberVerileri.data()["para"] > 100) {
+          duzeltilecekVeri.update(haberlerRef, {"para": mevcutPara - 100});
+          duzeltilecekVeri.update(_firestore.doc("users/sehirler"),
+              {"para": FieldValue.increment(100)});
+        } else {
           debugPrint("Yetersiz Bakiye !!");
         }
-
-
+      } else {
+        debugPrint("Haberler boş");
       }
-      else
-        {
-          debugPrint("Haberler boş");
-        }
     });
+  }
+
+  void _veriSilme() {
+    /*_firestore.doc("users/haberler").delete().then((value) {
+      showDialog(
+          context: context,
+          builder: (_) {
+            return AlertDialog(
+              title: Text("İşlem Başarılı"),
+              content: Text("İlgili kullanıcı bilgileri silindi"),
+              backgroundColor: Colors.deepOrangeAccent,
+              actions: [
+                FlatButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Tamam")),
+              ],
+            );
+          });
+    });*/
+    _firestore.doc("users/haberler").update({"para" : FieldValue.delete()});
+  }
+
+  Future _veriGetir() async{
+    DocumentSnapshot veriGetir = await _firestore.doc("users/haberler").get();
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => YeniSayfa(veri: veriGetir)));
+
   }
 }
